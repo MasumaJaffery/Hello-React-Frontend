@@ -10,7 +10,7 @@
 
 
 - [📗 Table of Contents](#-table-of-contents)
-- [📖 Hello Rails Front-end ](#Hello Rails Front-end)
+- [📖 Hello Rails Front-end ](#Hello React Frontend)
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
