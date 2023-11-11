@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
-import fetchGreeting from './actions';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-
+import fetchGreeting from '../redux/actions';
 
 function Greeting({ greeting, fetchGreeting }) {
   useEffect(() => {

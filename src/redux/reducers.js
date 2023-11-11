@@ -1,4 +1,4 @@
-import { FETCH_GREETING } from './action';
+import { FETCH_GREETING } from './actions';
 
 const initialState = {
   greeting: '',
