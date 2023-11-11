@@ -1,17 +1,12 @@
+export const FETCH_GREETING = 'FETCH_GREETING';
+
 const fetchGreeting = () => (dispatch) => {
-  console.log('Fetching greeting...');
-  fetch('http://localhost:3000/api/greetings')
+  fetch('http://127.0.0.1:3000/api/greetings')
     .then((response) => response.json())
-    .then((data) => {
-      console.log('Fetched data:', data);
-      dispatch({
-        type: 'FETCH_GREETING',
-        payload: data.greeting,
-      });
-    })
-    .catch((error) => {
-      console.error('Error fetching greeting:', error);
-    });
+    .then((data) => dispatch({
+      type: FETCH_GREETING,
+      payload: data.greeting,
+    }));
 };
 
 export default fetchGreeting;

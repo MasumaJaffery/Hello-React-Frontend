@@ -1,27 +1,20 @@
 import React, { useEffect } from 'react';
+import fetchGreeting from './actions';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import fetchGreeting from '../redux/actions';
+
 
 function Greeting({ greeting, fetchGreeting }) {
   useEffect(() => {
     fetchGreeting();
   }, [fetchGreeting]);
 
-  if (greeting === undefined) {
-    return <div>Loading...</div>; // or any loading indicator
-  }
-
   return <div>{greeting}</div>;
 }
 
 Greeting.propTypes = {
-  greeting: PropTypes.string,
+  greeting: PropTypes.string.isRequired,
   fetchGreeting: PropTypes.func.isRequired,
-};
-
-Greeting.defaultProps = {
-  greeting: '', // Provide a default value here
 };
 
 const mapStateToProps = (state) => ({
