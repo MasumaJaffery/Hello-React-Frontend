@@ -1,24 +1,35 @@
-import { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { connect, useSelector } from 'react-redux';
-import fetchGreeting from '../redux/actions';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getGreetings } from '../redux/slice';
 
-function Greeting({ fetchGreeting }) {
-  const greeting = useSelector((state) => state.greeting);
+const Greetings = () => {
+  const dispatch = useDispatch();
+  const { greeting, status, error } = useSelector((state) => state.greetings);
 
   useEffect(() => {
-    fetchGreeting();
-  }, [fetchGreeting]);
+    dispatch(getGreetings());
+  }, [dispatch]);
 
-  return <div>{greeting}</div>;
-}
+  if (status === 'loading') {
+    return <div>Loading...</div>;
+  }
 
-Greeting.propTypes = {
-  fetchGreeting: PropTypes.func.isRequired,
+  if (status === 'failed') {
+    return (
+      <div>
+        <div>Error:</div>
+        <div>{error}</div>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <div>
+        <h1>{greeting}</h1>
+      </div>
+    </div>
+  );
 };
 
-const mapDispatchToProps = {
-  fetchGreeting,
-};
-
-export default connect(null, mapDispatchToProps)(Greeting);
+export default Greetings;
